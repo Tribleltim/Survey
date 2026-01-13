@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phone Use Survey / 手机使用问卷</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: "Poppins", Arial, sans-serif;
+        background-color: #f9f4ef;
+        padding: 20px;
+        max-width: 850px;
+        margin: auto;
+        line-height: 1.7;
+        color: #3a3a3a;
+    }
+    h1 { text-align: center; color: #7a1f3d; font-weight: 600; margin-bottom: 30px; }
+    h2 { color: #7a1f3d; border-left: 6px solid #7a1f3d; padding-left: 10px; margin-top: 30px; }
+    .section-box { background: #fffaf6; padding: 20px; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.08); margin-bottom: 25px; }
+    label { display: block; margin-bottom: 6px; cursor: pointer; }
+    textarea { width: 100%; border: 2px solid #d9c7bf; border-radius: 8px; padding: 10px; font-family: "Poppins"; box-sizing: border-box; }
+    textarea:focus { border-color: #7a1f3d; outline: none; }
+    .language-buttons button { padding: 10px 18px; margin-right: 10px; font-size: 16px; cursor: pointer; border: none; border-radius: 6px; background-color: #7a1f3d; color: white; transition: 0.3s; }
+    .language-buttons button:hover { background-color: #a13357; }
+    button[type="submit"] { width: 100%; background: linear-gradient(90deg, #7a1f3d, #a13357); color: white; padding: 12px; border: none; border-radius: 10px; font-size: 18px; font-weight: 600; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+    button[type="submit"]:hover { opacity: 0.85; transform: scale(1.02); }
+    button:disabled { background: #ccc; cursor: not-allowed; }
+    #successMsg { display: none; color: #7a1f3d; margin-top: 20px; font-weight: 600; text-align: center; font-size: 18px; }
+</style>
+</head>
+
+<body>
+
+<h1> Phone Use Survey / 手机使用问卷</h1>
+
+<div class="language-buttons">
+    <button type="button" onclick="showEnglish()">English</button>
+    <button type="button" onclick="showChinese()">中文</button>
+</div>
+
+<!-- 关键修改：添加 target="hidden_iframe" -->
+<form id="surveyForm" target="hidden_iframe" method="POST">
+
+<!-- English Survey -->
+<div id="englishSurvey">
+<h2>Section 1 — Phone Use When Alone</h2>
+<p><strong>1. When you are alone, how often do you check your phone?</strong></p>
+<label><input type="radio" name="q1" value="A" required> A. Every 1–5 minutes</label><br>
+<label><input type="radio" name="q1" value="B"> B. Every 5–15 minutes</label><br>
+<label><input type="radio" name="q1" value="C"> C. Every 15–30 minutes</label><br>
+<label><input type="radio" name="q1" value="D"> D. Less than once per hour</label><br><br>
+
+<p><strong>2. Importance of your phone when alone:</strong></p>
+<label><input type="radio" name="q2" value="A" required> A. Extremely important</label><br>
+<label><input type="radio" name="q2" value="B"> B. Important but not essential</label><br>
+<label><input type="radio" name="q2" value="C"> C. Somewhat important</label><br>
+<label><input type="radio" name="q2" value="D"> D. Not very important</label><br><br>
+
+<p><strong>3. What do you mainly use your phone for? (Select all that apply)</strong></p>
+<label><input type="checkbox" name="q3" value="A"> A. Social media</label><br>
+<label><input type="checkbox" name="q3" value="B"> B. Video/streaming</label><br>
+<label><input type="checkbox" name="q3" value="C"> C. Messaging</label><br>
+<label><input type="checkbox" name="q3" value="D"> D. Work/study</label><br>
+<label><input type="checkbox" name="q3" value="E"> E. Gaming</label><br>
+<label><input type="checkbox" name="q3" value="F"> F. Music/podcasts</label><br>
+<label><input type="checkbox" name="q3" value="G"> G. Other</label><br><br>
+
+<p><strong>4. If your phone dies when alone, you feel:</strong></p>
+<label><input type="radio" name="q4" value="A" required> A. Very anxious</label><br>
+<label><input type="radio" name="q4" value="B"> B. Slightly uncomfortable</label><br>
+<label><input type="radio" name="q4" value="C"> C. Neutral</label><br>
+<label><input type="radio" name="q4" value="D"> D. Relieved/relaxed</label><br><br>
+
+<h2>Section 2 — Phone Use Around Others</h2>
+<p><strong>5. When with friends/family, how often do you check your phone?</strong></p>
+<label><input type="radio" name="q5" value="A" required> A. Almost never</label><br>
+<label><input type="radio" name="q5" value="B"> B. About every 30 minutes</label><br>
+<label><input type="radio" name="q5" value="C"> C. Every 10–15 minutes</label><br>
+<label><input type="radio" name="q5" value="D"> D. As frequently as when alone</label><br><br>
+
+<p><strong>6. Do you intentionally reduce phone use around others?</strong></p>
+<label><input type="radio" name="q6" value="A" required> A. Yes, completely</label><br>
+<label><input type="radio" name="q6" value="B"> B. Yes, significantly</label><br>
+<label><input type="radio" name="q6" value="C"> C. Sometimes</label><br>
+<label><input type="radio" name="q6" value="D"> D. No</label><br><br>
+
+<p><strong>7. How important is your phone around others?</strong></p>
+<label><input type="radio" name="q7" value="A" required> A. Not important</label><br>
+<label><input type="radio" name="q7" value="B"> B. Slightly important</label><br>
+<label><input type="radio" name="q7" value="C"> C. Moderately important</label><br>
+<label><input type="radio" name="q7" value="D"> D. Same as when alone</label><br><br>
+
+<p><strong>8. If you receive a message while with others, you:</strong></p>
+<label><input type="radio" name="q8" value="A" required> A. Ignore it</label><br>
+<label><input type="radio" name="q8" value="B"> B. Check briefly but don’t reply</label><br>
+<label><input type="radio" name="q8" value="C"> C. Check and sometimes reply</label><br>
+<label><input type="radio" name="q8" value="D"> D. Immediately check and reply</label><br><br>
+
+<h2>Section 3 — Reflection</h2>
+<p><strong>9. Difference in phone dependence:</strong></p>
+<label><input type="radio" name="q9" value="A" required> A. Significant difference</label><br>
+<label><input type="radio" name="q9" value="B"> B. Some difference</label><br>
+<label><input type="radio" name="q9" value="C"> C. Slight difference</label><br>
+<label><input type="radio" name="q9" value="D"> D. No difference</label><br><br>
+
+<p><strong>10. One sentence describing your phone use:</strong></p>
+<textarea id="q10_en" rows="3" placeholder="Please type here..."></textarea><br><br>
+</div>
+
+<!-- Chinese Survey -->
+<div id="chineseSurvey" style="display:none;">
+<h2>第一部分：独处时的手机使用情况</h2>
+<p><strong>1. 当你独自一人时，你多久会看一次手机？</strong></p>
+<label><input type="radio" name="q1" value="A"> A. 每 1–5 分钟</label><br>
+<label><input type="radio" name="q1" value="B"> B. 每 5–15 分钟</label><br>
+<label><input type="radio" name="q1" value="C"> C. 每 15–30 分钟</label><br>
+<label><input type="radio" name="q1" value="D"> D. 超过 1 小时才会看一次</label><br><br>
+
+<p><strong>2. 独处时手机对你的重要性：</strong></p>
+<label><input type="radio" name="q2" value="A"> A. 非常重要</label><br>
+<label><input type="radio" name="q2" value="B"> B. 重要但不是必须</label><br>
+<label><input type="radio" name="q2" value="C"> C. 有一点重要</label><br>
+<label><input type="radio" name="q2" value="D"> D. 不太重要</label><br><br>
+
+<p><strong>3. 你主要用手机做什么？（可多选）</strong></p>
+<label><input type="checkbox" name="q3" value="A"> A. 社交媒体</label><br>
+<label><input type="checkbox" name="q3" value="B"> B. 看视频/追剧</label><br>
+<label><input type="checkbox" name="q3" value="C"> C. 聊天通讯</label><br>
+<label><input type="checkbox" name="q3" value="D"> D. 工作/学习</label><br>
+<label><input type="checkbox" name="q3" value="E"> E. 游戏</label><br>
+<label><input type="checkbox" name="q3" value="F"> F. 音乐/播客</label><br>
+<label><input type="checkbox" name="q3" value="G"> G. 其他</label><br><br>
+
+<p><strong>4. 如果独处时手机没电，你会感觉：</strong></p>
+<label><input type="radio" name="q4" value="A"> A. 非常焦虑</label><br>
+<label><input type="radio" name="q4" value="B"> B. 有点不舒服</label><br>
+<label><input type="radio" name="q4" value="C"> C. 普通</label><br>
+<label><input type="radio" name="q4" value="D"> D. 放松轻松</label><br><br>
+
+<h2>第二部分：与他人相处时的手机使用</h2>
+<p><strong>5. 和朋友或家人在一起时，你多久看一次手机？</strong></p>
+<label><input type="radio" name="q5" value="A"> A. 几乎不看</label><br>
+<label><input type="radio" name="q5" value="B"> B. 大约 30 分钟看一次</label><br>
+<label><input type="radio" name="q5" value="C"> C. 每 10–15 分钟</label><br>
+<label><input type="radio" name="q5" value="D"> D. 和独处时一样</label><br><br>
+
+<p><strong>6. 你会减少使用手机吗？</strong></p>
+<label><input type="radio" name="q6" value="A"> A. 会，几乎不看</label><br>
+<label><input type="radio" name="q6" value="B"> B. 会，明显减少</label><br>
+<label><input type="radio" name="q6" value="C"> C. 偶尔</label><br>
+<label><input type="radio" name="q6" value="D"> D. 不会</label><br><br>
+
+<p><strong>7. 在别人面前手机的重要性：</strong></p>
+<label><input type="radio" name="q7" value="A"> A. 不重要</label><br>
+<label><input type="radio" name="q7" value="B"> B. 略微重要</label><br>
+<label><input type="radio" name="q7" value="C"> C. 一般重要</label><br>
+<label><input type="radio" name="q7" value="D"> D. 和独处一样重要</label><br><br>
+
+<p><strong>8. 收到消息你会：</strong></p>
+<label><input type="radio" name="q8" value="A"> A. 不看</label><br>
+<label><input type="radio" name="q8" value="B"> B. 看但不回复</label><br>
+<label><input type="radio" name="q8" value="C"> C. 看并偶尔回复</label><br>
+<label><input type="radio" name="q8" value="D"> D. 立即回复</label><br><br>
+
+<h2>第三部分：反思</h2>
+<p><strong>9. 你觉得差异大吗？</strong></p>
+<label><input type="radio" name="q9" value="A"> A. 差别非常大</label><br>
+<label><input type="radio" name="q9" value="B"> B. 有差但不大</label><br>
+<label><input type="radio" name="q9" value="C"> C. 不明显</label><br>
+<label><input type="radio" name="q9" value="D"> D. 没有差别</label><br><br>
+
+<p><strong>10. 一句话描述你的手机关系：</strong></p>
+<textarea id="q10_cn" rows="3" placeholder="请在这里输入..."></textarea><br><br>
+</div>
+
+<button type="submit">Submit / 提交</button>
+<div id="successMsg">✔ Thank you! Your response has been recorded.<br>谢谢！您的回复已记录。</div>
+
+</form>
+
+<!-- 关键修改：添加这个隐藏的 iframe -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<script>
+// language toggle
+function showEnglish() {
+    document.getElementById("englishSurvey").style.display = "block";
+    document.getElementById("chineseSurvey").style.display = "none";
+}
+
+function showChinese() {
+    document.getElementById("englishSurvey").style.display = "none";
+    document.getElementById("chineseSurvey").style.display = "block";
+}
+</script>
+<script src="submit.js?v=5"></script>
+</body>
+</html>
